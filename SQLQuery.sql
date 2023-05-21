@@ -6,28 +6,28 @@ select count (*) from track
 select * from customer
 where city in ('london','delhi');
 
--- Q1. who is the senior most employee based on the job title?
+-- Q1.1 who is the senior most employee based on the job title?
 select top 1 * from employee
 order by levels desc;
 
---Q2. which countries have the most invoices?
+--Q1.2 which countries have the most invoices?
 Select count (*) as c, billing_country
 From invoice
 GROUP BY billing_country
 order by c desc;
 
---Q3.what are the top3 values of total invoice?
+--Q1.3 what are the top3 values of total invoice?
 select top 3 total from invoice
 ORDER BY total desc;  
 
---Q4. which city has the best customers? we would  like to throw a promotional music festival in the city we made the most money
+--Q1.4 which city has the best customers? we would  like to throw a promotional music festival in the city we made the most money
 --write a query that returns one city that has the highest sum of sum of invoice totals. Return both the city name & sum of all invoice totals
 SELECT  sum (total) as invoice_total, billing_city
 FROM invoice
 group by billing_city
 order by invoice_total desc;
 
---Q5. who is the best customer? the customer who has spent the most money will be declared the best customer. 
+--Q2.1 who is the best customer? the customer who has spent the most money will be declared the best customer. 
 --write a query that return the person who has spent the most money 
 select TOP 1 c.customer_id,c.first_name,c.last_name, sum(i.total ) AS total
 From customer c
@@ -39,7 +39,7 @@ ORDER BY  total desc;
 select * from customer 
 select * from invoice 
 
---Q6. write query to return the email, first name , last name, henre of all rock music listeners.
+--Q1.2 write query to return the email, first name , last name, henre of all rock music listeners.
 --returen your list orderd alphabeticalluy by email starting with A.
 select distinct email, first_name , last_name 
 from customer 
@@ -51,7 +51,7 @@ join genre on track.genre_id= genre.genre_id
 where genre.name like 'ROCK')
 order by email;
 
---Q.7 lets invite the artist who have written the most rock music in our date set
+--Q.2.3 lets invite the artist who have written the most rock music in our date set
 --write a query that returns the artist name and total track count of the top 10 rock bands.
 select * from genre
 select * from artist
@@ -68,7 +68,7 @@ where genre.name LIKE 'ROCK'
 GROUP BY artist.artist_id,artist.name
 order by number_of_songs DESC;
 
---Q8. Return all the track names that have a song length longer than the average song length.
+--Q2.4 Return all the track names that have a song length longer than the average song length.
 --return the name and milliseconds for each track.
 --order by the song length with the longest songs listed first
 
