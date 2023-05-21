@@ -131,7 +131,7 @@ order by milliseconds desc;
 	-- order by 2 asc, 1 desc
 )
 select * from popular_genre where Rowno <= 1
-
+--ROW_NUMBER() function generates a sequential number for each row within a partition in the resultant output. In each partition, the first-row number begins with initial
 --Q3.3 write a query that determines the customer that has spent the most
 --on music for each country. write a query that returns the country along 
 -- with the top customer and how mush they spent. for countries where the top amount 
